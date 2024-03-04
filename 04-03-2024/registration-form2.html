@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        .center-form {
+        /* background-color: rgb(241, 171, 39); */
+        margin: 70px auto;
+        border-radius: 4px;
+        height: 600px;
+        padding: 10px;
+        padding-left : 50px;
+        padding-right: 100px;
+        width : 30%;
+        border: solid black 1px;
+    }
+    form {
+        font-size: smaller;
+    }
+
+    input[type=text] {
+        border: 0px;
+        border-bottom: solid black 1px;
+        width: 10%;
+    }
+    </style>
+    
+</head>
+<body>
+    <div class="container center-form">
+        <table>
+            <tr>
+                <td><img src="static/img/logo.png" alt="Logo"></td>
+                <td>
+                    <h2 style="margin-bottom: -20px; margin-top: -20px; text-align: center;">O.P JINDAL SCHOOL</h2><br>
+                    <p>
+                    Savitri Nagar, Tamnar, Raigarh, C.G. 496108.
+                    Affiliated to CBSE, New Delhi. Aff. No. 3330096
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <h3 style="border: solid black 2px; margin-left: 140px; margin-right:90px; margin-top: -30px; text-align: center; margin-bottom: 10px;" >REGISTRATION FORM</h3>
+        <form action="">
+            <label for="rfno" style="margin-left: 6.5cm;"  >* Registration Form No.</label>
+            <input style=" width: 15%;" type="text"  id="rfno" name="rfno">
+
+            <div style="float: right; width : 20%; border: solid black 1px;  text-align:center;  margin:10px;">
+                <p style="padding-top:20px; ">Insert image</p>
+                <input style="padding-bottom: 20px; width: 50%;" type="file">
+            </div>
+
+            <label for="class">* Class to which admission is sought.</label>
+            <input type="text" id="class" name="class">
+        </form>
+
+        
+    </div>
+    
+</body>
+</html>
