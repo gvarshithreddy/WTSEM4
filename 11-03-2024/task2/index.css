@@ -1,0 +1,38 @@
+.side-nav{
+  width:45%;
+  height: 80vh;
+  
+}
+
+#left-side-nav{
+  background-image: linear-gradient(to bottom,rgb(195, 195, 195),beige);
+}
+
+#right-side-nav{
+  background-image: linear-gradient(to bottom,rgb(255, 255, 255),beige);
+}
+
+
+a{
+  /* background-color: rgb(153, 153, 153); */
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+  text-align: center;
+}
+
+.content{
+  background-color: beige;
+}
+
+button{
+  padding-left:100px;
+  padding-right: 100px;
+}
+#foot {
+  background-color: black;
+}
+#mysite{
+  color: gray;
+}
