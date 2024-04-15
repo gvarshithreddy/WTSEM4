@@ -1,0 +1,29 @@
+.card {
+    width: 10em;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    background-color: rgba(74, 232, 238, 0.389);
+    margin: 10px;
+    padding: 10px;
+    color: white;
+}
+
+.cardContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(13, 210, 89, 0.5);
+    transform: scale(1.1);
+    background-color: rgb(23, 173, 35);
+}
+.card:active{
+    transform: scale(1.05);
+    background-color: rgb(1, 76, 16);
+}
