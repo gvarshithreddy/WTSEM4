@@ -1,0 +1,3 @@
+2. Navigate to a particular element using DOM (Document Object Model) and modify it. Also understand the
+	difference between a real DOM and Virtual DOM. ----- DONE
+3. Explore the new features introduced in ES5 to recent
