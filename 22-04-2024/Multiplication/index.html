@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <link rel="stylesheet" href="/static/index.css">
+    <style>
+        body{
+            background-color: black;
+        }
+        h1{
+            color: white;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        table{
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <input type="text" placeholder="Enter Rows" style="padding: 5px;" name="rows" id="rows">
+    <input type="text" placeholder="Enter Columns" style="padding: 5px;" name="columns" id="columns">
+    <button onclick="generateTable()">Generate Table</button>
+    <table style="border: 1;" id="table"></table>
+
+    <script>
+        function generateTable(){
+            let rows = (document.getElementById('rows').value)  ? parseInt(document.getElementById('rows').value) : 10;
+            let columns = (document.getElementById('columns').value) ? parseInt(document.getElementById('columns').value) : 10;
+            let table = document.getElementById('table');
+            for(let i=1; i<=rows; i++){
+                let row = document.createElement('tr');
+                for(let j=1; j<=columns; j++){
+                    let cell = document.createElement('td');
+                    cell.style.border = '1px solid white';
+                    cell.style.padding = '10px';
+                    cell.style.textAlign = 'center';
+                    cell.style.color = 'white';
+                    cell.style.fontSize = '20px';
+                    cell.innerHTML = i*j;
+                    row.appendChild(cell);
+                }
+                table.appendChild(row);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Format</title>
+    <style>
+        body{
+            background-color: rgb(0, 0, 0);
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        h1{
+            font-size: 50px;
+            font-weight: bold;
+        }
+        input[type='number']{
+            padding: 5px;
+            border-radius: 10px;
+            margin: auto;
+            width: 30%;
+        }
+        button{
+            padding: 10px;
+            border-radius: 10px;
+            margin: auto;
+            display: inline;
+            background-color: white;
+            color: black;
+            font-size: 15px;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <h1>Number Formatter</h1>
+    <label for="number">Enter the number to be formatted</label>
+    <input type="number" id="number">
+    <br>
+    <button onclick="format()">Format</button>
+    <p id="formattedNumber"></p>
+    <script>
+        function format(){
+            let number = document.getElementById('number').value.toString();
+            i = 0
+            j =1
+            while(j < number.length){
+                if(number[i]%2==0 && number[j]%2==0){
+                    number = number.slice(0, j) + '-' + number.slice(j);
+                    i = j+1;
+                    j = i+1;
+                }
+                else{
+                    i++;
+                    j++;
+                }
+            }
+            document.getElementById('formattedNumber').innerText = 'formatted number is'+number;
+        }
+    </script>
+</body>
+</html>
