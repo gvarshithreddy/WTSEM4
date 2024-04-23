@@ -1,52 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Number Multiplication</title>
     <style>
-        body{
-            background-color: black;
-            color: white;
-            font-size: 20px;
-            font-family: 'Courier New', Courier, monospace;
-            text-align: center;
-        }
-        h1{
-            font-size: 50px;
-            font-weight: bold;
-        }
-        table{
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-        tr{
-            border: 1px solid white;
-        }
-        
-        
+      body {
+        background-color: white;
+        color: black;
+        font-size: 20px;
+        font-family: "Courier New", Courier, monospace;
+        text-align: center;
+      }
+      h1 {
+        font-size: 50px;
+        font-weight: bold;
+      }
+      table {
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      tr {
+        border: 1px solid white;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <label for="number">Table For</label>
-    <input type="number" id="number">
+    <input type="number" id="number" />
     <button onClick="generateTable()">Generate Table</button>
     <table id="table"></table>
 
     <script>
-        function generateTable(){
-            let number = document.getElementById('number').value;
-            let table = document.getElementById('table');
-            table.innerHTML = '';
-            for(let i=1; i<=10; i++){
-                let row = document.createElement('tr');
-                let cell = document.createElement('td');
-                cell.innerHTML = `${number} x ${i} = ${number*i}`;
-                row.appendChild(cell);
-                table.appendChild(row);
-            }
+      function generateTable() {
+        let number = document.getElementById("number").value;
+        let table = document.getElementById("table");
+        table.innerHTML = "";
+        for (let i = 1; i <= 10; i++) {
+          let row = document.createElement("tr");
+          let cell = document.createElement("td");
+          cell.innerHTML = `${number} x ${i} = ${number * i}`;
+          row.appendChild(cell);
+          table.appendChild(row);
         }
-
+      }
     </script>
-</body>
+  </body>
 </html>

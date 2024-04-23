@@ -1,47 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Most Frequent element</title>
     <style>
-        body{
-            background-color: black;
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            text-align: center;
-            margin-top: 30px;
-        }
+      body {
+        background-color: white;
+        color: black;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <p id="array"></p>
-    
+
     <p id="mfe"></p>
     <button onclick="calculate()">Generate Array</button>
     <script>
-        
-        function calculate(){
-            const array = [3, 'b', 'b', 'b', 2, 3, 'a', 3, 'a', 2, 4, 9, 3];
-            document.getElementById('array').innerHTML = `Array: [${array}]`;
-            mfe = document.getElementById('mfe');
-            let mfo = {};
-            let max = 0;
-            array.forEach((element) => {
-                if(mfo[element]){
-                    mfo[element]++;
-                    if (mfo[element] > max){
-                        max = element;
-                    }
-                }
-                else{
-                    mfo[element] = 1;
-                }
-            });
-            mfe.innerHTML = `Most Frequent Element: ${max}`;
-
-        }
+      function calculate() {
+        const array = [3, "b", "b", "b", 2, 3, "a", 3, "a", 2, 4, 9, 3];
+        document.getElementById("array").innerHTML = `Array: [${array}]`;
+        mfe = document.getElementById("mfe");
+        let mfo = {};
+        let max = 0;
+        array.forEach((element) => {
+          if (mfo[element]) {
+            mfo[element]++;
+            if (mfo[element] > max) {
+              max = element;
+            }
+          } else {
+            mfo[element] = 1;
+          }
+        });
+        mfe.innerHTML = `Most Frequent Element: ${max}`;
+      }
     </script>
-</body>
+  </body>
 </html>
