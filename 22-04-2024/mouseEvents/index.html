@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+  , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+      h2 {
+        color: white;
+        font-weight: 300;
+      }
+      button {
+        padding: 10px;
+        margin: 10px;
+        background-color: rgba(0, 208, 255, 0.848);
+        color: black;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+      button:hover {
+        background-color: rgba(0, 208, 255, 0.5);
+        cursor: pointer;
+      }
+
+      button:active {
+        transform: scale(0.95);
+        transition: ease-out 0.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Mouse Click Events</h1>
+    <h2>Click on the respective button to see the event</h2>
+    <button
+      id="btn"
+      onclick="handleClick()"
+      ondblclick="handleDbclick()"
+      oncontextmenu="handleRightClick()"
+      onmousedown="handleMouseDown()"
+      onmouseup="handleMouseUp()"
+      onmouseenter="handleMouseEnter()"
+      onmouseleave="handleMouseLeave()"
+    >
+      Click Me
+    </button>
+    <p id="click-reaction"></p>
+
+    <script>
+      const btn = document.getElementById("btn");
+      const clickReaction = document.getElementById("click-reaction");
+
+      function handleClick() {
+        clickReaction.innerText = "You clicked the button";
+      }
+
+      function handleDbclick() {
+        clickReaction.innerText = "You double clicked the button";
+      }
+
+      function handleRightClick() {
+        clickReaction.innerText = "You right clicked the button";
+      }
+
+      function handleMouseDown() {
+        clickReaction.innerText = "You pressed the mouse button";
+      }
+
+      function handleMouseUp() {
+        clickReaction.style.transform = "scale(1)";
+      }
+
+      function handleMouseEnter() {
+        clickReaction.innerText = "You entered the button";
+      }
+
+      function handleMouseLeave() {
+        clickReaction.innerText = "You left the button";
+      }
+    </script>
+  </body>
+</html>
