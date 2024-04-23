@@ -1,92 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
     <style>
-        body{
-            background-color: black;
-            color: white;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 20px;
-            text-align: center;
-            margin-top: 30px;
-        }
-        input{
-            padding: 5px;
-            margin: auto;
-    
-            
-        }
-        .calculator-bg{
-            background-color: rgb(65, 65, 65);
-            color: rgb(255, 255, 255);
-            padding: 10px;
-            border-radius: 10px;
-            margin: auto;
-            width: 30%;
-        }
-        .calculator-bg button{
-            padding: 7px;
-            border-radius: 10px;
-            margin: 10px;
-            background-color: rgb(255, 255, 255);
-            color: black;
-            font-size: 20px;
-        }
-        .number-button-group{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 70%;
-        }
-        .calculator-input-group{
-            display: flex;
-            justify-content: center;
-
-        }
-        .operator-button-group{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 30%;
-        }
+      body {
+        background-color: black;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        font-size: 20px;
+        text-align: center;
+        margin-top: 30px;
+      }
+      input {
+        padding: 5px;
+        margin: auto;
+      }
+      .calculator-bg {
+        background-color: rgb(65, 65, 65);
+        color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 10px;
+        margin: auto;
+        width: 30%;
+      }
+      .calculator-bg button {
+        padding: 7px;
+        border-radius: 10px;
+        margin: 10px;
+        background-color: rgb(255, 255, 255);
+        color: black;
+        font-size: 20px;
+      }
+      .number-button-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 70%;
+      }
+      .calculator-input-group {
+        display: flex;
+        justify-content: center;
+      }
+      .operator-button-group {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 30%;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Calculator</h1>
-    
+
     <div class="calculator-bg">
-        <input type="text" id="screen" value="" style="width: 80%; height: 30px; margin-bottom: 10px; margin-top: 10px;">
-        <div class="calculator-input-group">
-            <div class="number-button-group">
-                <button>1</button>
-                <button>2</button>
-                <button>3</button>
-                <button>4</button>
-                <button>5</button>
-                <button>6</button>
-                <button>7</button>
-                <button>8</button>
-                <button>9</button>
-                <button>C</button>
-                <button>0</button>
-                <button>=</button>
-            </div>
-            <div class="operator-button-group">
-                <button>+</button>
-                <button>-</button>
-                <button>*</button>
-                <button>/</button>
-            </div>
+      <input
+        type="text"
+        id="screen"
+        value=""
+        style="
+          text-align: end;
+          width: 80%;
+          height: 30px;
+          margin-bottom: 10px;
+          margin-top: 10px;
+        "
+      />
+      <div class="calculator-input-group">
+        <div class="number-button-group">
+          <button onclick="addValue('1')">1</button>
+          <button onclick="addValue('2')">2</button>
+          <button onclick="addValue('3')">3</button>
+          <button onclick="addValue('4')">4</button>
+          <button onclick="addValue('5')">5</button>
+          <button onclick="addValue('6')">6</button>
+          <button onclick="addValue('7')">7</button>
+          <button onclick="addValue('8')">8</button>
+          <button onclick="addValue('9')">9</button>
+          <button onclick="clearScreen()" style="background-color: burlywood">
+            C
+          </button>
+          <button onclick="addValue('0')">0</button>
+          <button onclick="calculate()">=</button>
         </div>
-        
+        <div class="operator-button-group">
+          <button onclick="addValue('+')">+</button>
+          <button onclick="addValue('-')">-</button>
+          <button onclick="addValue('*')">*</button>
+          <button onclick="addValue('/')">/</button>
+        </div>
+      </div>
     </div>
     <script>
-        function addValue(e){
-            console.log(e);
+      let expression = ""; // Variable to store the expression
+
+      function addValue(value) {
+        // Update expression on button click
+        expression += value;
+        document.getElementById("screen").value = expression;
+      }
+      function clearScreen() {
+        // Clear the expression and screen
+        expression = "";
+        document.getElementById("screen").value = "";
+      }
+
+      function calculate() {
+        try {
+          // Calculate the expression using the BODMAS function
+          const result = calculateBODMAS(expression);
+          document.getElementById("screen").value = result;
+          expression = ""; // Reset expression for next calculation
+        } catch (error) {
+          // Handle errors (e.g., invalid expression)
+          document.getElementById("screen").value = "Error";
+          expression = "";
         }
+      }
+
+      // Include the BODMAS calculation function from previous code
+      function calculateBODMAS(expression) {
+        // Operator precedence lookup table
+        const precedence = {
+          "^": 3,
+          "*": 2,
+          "/": 2,
+          "+": 1,
+          "-": 1,
+        };
+
+        // Function to perform basic arithmetic operations
+        function operate(a, operator, b) {
+          switch (operator) {
+            case "+":
+              return a + b;
+            case "-":
+              return a - b;
+            case "*":
+              return a * b;
+            case "/":
+              return a / b;
+            case "^":
+              return Math.pow(a, b);
+            default:
+              throw new Error("Invalid operator");
+          }
+        }
+
+        // Function to evaluate a postfix expression
+        function evaluatePostfix(postfix) {
+          const stack = [];
+          for (const token of postfix) {
+            if (!isNaN(token)) {
+              stack.push(parseFloat(token));
+            } else {
+              const b = stack.pop();
+              const a = stack.pop();
+              stack.push(operate(a, token, b));
+            }
+          }
+          return stack.pop();
+        }
+
+        // Function to convert infix expression to postfix
+        function toPostfix(expression) {
+          const stack = [];
+          const output = [];
+          for (const token of expression) {
+            if (!isNaN(token)) {
+              output.push(token);
+            } else if (token === "(") {
+              stack.push(token);
+            } else if (token === ")") {
+              while (stack[stack.length - 1] !== "(") {
+                output.push(stack.pop());
+              }
+              stack.pop(); // Remove the opening parenthesis
+            } else {
+              while (
+                stack.length > 0 &&
+                precedence[stack[stack.length - 1]] >= precedence[token]
+              ) {
+                output.push(stack.pop());
+              }
+              stack.push(token);
+            }
+          }
+          while (stack.length > 0) {
+            output.push(stack.pop());
+          }
+          return output;
+        }
+
+        // Convert infix expression to postfix and evaluate
+        const postfix = toPostfix(expression);
+        return evaluatePostfix(postfix);
+      }
     </script>
-</body>
+  </body>
 </html>
