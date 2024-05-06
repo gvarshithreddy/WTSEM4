@@ -1,0 +1,14 @@
+body {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+.students {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.heading {
+  margin: 1cm;
+}
