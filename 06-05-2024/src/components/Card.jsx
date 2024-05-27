@@ -3,13 +3,24 @@ import "./static/Card.css";
 const Card = (props) => {
   const onClickPresent = () => {
     document.getElementById(props.student.rollno).classList.add("present");
+    document.getElementById(props.student.rollno).classList.remove("absent");
     let presenties = props.presenties;
-    props.setPresenties([...presenties, props.student.rollno]);
+    if (!presenties.includes(props.student.rollno)) {
+      presenties.push(props.student.rollno);
+      props.setPresenties([...presenties]);
+    }
     console.log(props.presenties);
   };
 
   const onClickAbsent = () => {
     document.getElementById(props.student.rollno).classList.add("absent");
+    document.getElementById(props.student.rollno).classList.remove("present");
+    if (props.presenties.includes(props.student.rollno)) {
+      let presenties = props.presenties;
+      presenties.splice(presenties.indexOf(props.student.rollno), 1);
+      props.setPresenties([...presenties]);
+      console.log(props.presenties);
+    }
   };
   return (
     <div className="card" id={props.student.rollno}>

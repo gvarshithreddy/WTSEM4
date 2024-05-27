@@ -1,77 +1,45 @@
 import "./App.css";
 import Card from "./components/Card";
 import NavBar from "./components/NavBar";
-import { useState, useContext, createContext } from "react";
+import { useEffect, useState } from "react";
 
-const PresentiesContext = createContext();
 function App() {
-  const [studentList, setStudentList] = useState([
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Varshith",
-      rollno: 160122733176,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Venu",
-      rollno: 160122733192,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Abhilash",
-      rollno: 160122733182,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Bhargav",
-      rollno: 160122733185,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Nagendra",
-      rollno: 160122733195,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Pranav",
-      rollno: 160122733175,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Vijay",
-      rollno: 160122733177,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Bharath",
-      rollno: 160122733180,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Vasanth",
-      rollno: 160122733183,
-    },
-    {
-      imageURL: "https://picsum.photos/300/300",
-      name: "Swapnith",
-      rollno: 160122733186,
-    },
-  ]);
-  const [date, setDate] = useState(new Date());
-  const [courses, setCourses] = useState([
-    "Web Technologies",
-    "Web technologies Lab",
-    "DataBase managemet Systems",
-    "Database Systems Lab",
-    "Probabiility and Statistics",
-  ]);
+  const [studentList, setStudentList] = useState([]);
 
+  const [date, setDate] = useState(new Date());
+  const [courses, setCourses] = useState([]);
   const [presenties, setPresenties] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/getCourses")
+      .then((res) => res.json())
+      .then((data) => setCourses(data.map((course) => course.name)));
+
+    fetch("http://localhost:5000/api/getStudents")
+      .then((res) => res.json())
+      .then((data) => setStudentList(data));
+  }, []);
+
+  const postAttendance = async () => {
+    await fetch("http://localhost:5000/api/markAttendance", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        date,
+        course: document.getElementById("course").value,
+        presenties,
+      }),
+    })
+      .then((res) => res.text())
+      .then((data) => console.log(data));
+  };
 
   return (
     <>
       <NavBar />
-      <h1>Admission Form</h1>
+      <h1>Attendance Form</h1>
       <div className="heading">
         <label htmlFor="date">Marking Attendance for </label>
         <input
@@ -102,6 +70,9 @@ function App() {
             />
           ))}
       </div>
+      <button className="mark" onClick={postAttendance}>
+        Mark Attendance
+      </button>
     </>
   );
 }

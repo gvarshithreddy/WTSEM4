@@ -12,3 +12,22 @@ body {
 .heading {
   margin: 1cm;
 }
+
+.present {
+  background-color: green;
+  color: white;
+}
+
+.absent {
+  background-color: red;
+  color: white;
+}
+
+.mark {
+  margin: 1cm;
+  padding: 0.5cm;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 0.5cm;
+}
